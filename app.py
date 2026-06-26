@@ -13,7 +13,7 @@ def get_ai_analysis(all_results, use_rsi, use_bb, mode, rsi_buy, rsi_sell, bb_bu
     try:
         api_key = st.secrets["GEMINI_API_KEY"]
         genai.configure(api_key=api_key)
-        client = genai.GenerativeModel('gemini-1.5-flash') 
+        client = genai.GenerativeModel('gemini-2.5-flash') 
     except Exception as e:
         st.error(f"🔑 Gemini API 설정 중 오류가 발생했습니다: {e}")
         return None
