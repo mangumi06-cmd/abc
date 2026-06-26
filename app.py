@@ -12,9 +12,16 @@ def get_ai_analysis(all_results, use_rsi, use_bb, mode, rsi_buy, rsi_sell, bb_bu
     
     try:
         client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
-    except Exception:
-        st.error("🔑 Gemini API 키가 설정되지 않았습니다. 사이드바나 Secrets를 확인해 주세요.")
-        return None
+    excetry:
+    # 1. 키를 가져와서 구글 라이브러리에 주입(configure)합니다.
+    api_key = st.secrets["GEMINI_API_KEY"]
+    google.generativeai.configure(api_key=api_key)
+    
+    # 2. 클라이언트 대신 GenerativeModel 객체를 생성합니다.
+    client = google.generativeai.GenerativeModel('gemini-1.5-flash') # 혹은 사용하시는 모델명
+except Exception as e:
+    st.error(f"🔑 Gemini API 설정 중 오류가 발생했습니다: {e}")
+    return None
 
     
     strategy_summary = f"""
