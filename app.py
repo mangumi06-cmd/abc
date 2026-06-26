@@ -11,14 +11,14 @@ plt.rcParams['axes.unicode_minus'] = False
 def get_ai_analysis(all_results, use_rsi, use_bb, mode, rsi_buy, rsi_sell, bb_buy_pct, bb_sell_pct):
     
     try:
-        client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
-    excetry:
-    # 1. 키를 가져와서 구글 라이브러리에 주입(configure)합니다.
+    # 1. 축약형(genai)을 사용하여 API 키를 설정합니다.
     api_key = st.secrets["GEMINI_API_KEY"]
-    google.generativeai.configure(api_key=api_key)
+    genai.configure(api_key=api_key)
     
-    # 2. 클라이언트 대신 GenerativeModel 객체를 생성합니다.
-    client = google.generativeai.GenerativeModel('gemini-1.5-flash') # 혹은 사용하시는 모델명
+    # 2. 모델 객체를 생성하여 client 변수에 담습니다.
+    # (밑에 기존 코드들이 client 변수를 쓰고 있을 테니 이름은 client로 유지합니다)
+    client = genai.GenerativeModel('gemini-1.5-flash') 
+    
 except Exception as e:
     st.error(f"🔑 Gemini API 설정 중 오류가 발생했습니다: {e}")
     return None
