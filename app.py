@@ -2,7 +2,7 @@ import streamlit as st
 import pyupbit
 import pandas as pd
 import matplotlib.pyplot as plt
-from google.generativeai import genai
+import google.generativeai as genai
 
 
 plt.rcParams['font.family'] = 'Malgun Gothic' 
