@@ -47,10 +47,7 @@ def get_ai_analysis(all_results, use_rsi, use_bb, mode, rsi_buy, rsi_sell, bb_bu
 
     
     try:
-        response = client.models.generate_content(
-            model='gemini-2.5-flash',
-            contents=prompt,
-        )
+        response = client.generate_content("여기에 질문이나 프롬프트 내용")
         return response.text
     except Exception as e:
         return f"🚨 AI 분석 중 오류가 발생했습니다: {str(e)}"
