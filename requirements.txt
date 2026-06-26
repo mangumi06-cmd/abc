@@ -1,5 +1,5 @@
 streamlit
 pandas
-numpy
+pyupbit
 matplotlib
 google-generativeai
